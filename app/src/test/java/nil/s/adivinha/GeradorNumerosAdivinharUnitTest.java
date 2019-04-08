@@ -16,10 +16,9 @@ public class GeradorNumerosAdivinharUnitTest {
 
         int min = 10;
         int max = 1;
-        int num;
 
         for(int i = 0; i < 100000; i++) {
-            num = gerador.getProximoNumeroAdivinhar();
+            int num = gerador.getProximoNumeroAdivinhar();
 
             if(num < min){
                 min = num;
