@@ -16,4 +16,12 @@
     <string name="não">Não</string>
     <string name="action_novo">Novo</string>
     <string name="novo">Estatisticas</string>
+    <string name="title_activity_estatisticas">Estatisticas</string>
+    <string name="tentativas">Tentativas</string>
+    <string name="minimo">minimo</string>
+    <string name="jogos">Jogos</string>
+    <string name="maximo">Maximo</string>
+    <string name="media">Media</string>
+    <string name="vitorias">Vitorias</string>
+    <string name="derrotas">derrotas</string>
 </resources>
