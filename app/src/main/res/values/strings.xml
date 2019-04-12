@@ -8,8 +8,10 @@
     <string name="num_maior">Não, é maior.</string>
     <string name="num_menor">Não, é menor.</string>
     <string name="acertou">Acertou</string>
+    <string name="perdeu">Perdeu</string>
     <string name="num_tent_1">Acertou ao fim de</string>
-    <string name="num_tent_2">tentativas. Jogar de novo?</string>
+    <string name="num_tent_15">tentativas. </string>
+    <string name="num_tent_2">Jogar de novo?</string>
     <string name="sim">sim</string>
     <string name="não">Não</string>
     <string name="action_novo">Novo</string>

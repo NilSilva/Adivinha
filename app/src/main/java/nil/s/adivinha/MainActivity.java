@@ -18,6 +18,14 @@ public class MainActivity extends AppCompatActivity {
     private int numerosAdivinhar;
     private  GeradorNumerosAdivinhar geradorNumeros;
     private int tentativas;
+    private static int TENTATIVAS_ATE_PERDER = 5;
+
+    private int minTentativasGanhar = TENTATIVAS_ATE_PERDER;
+    private int maxTentativasGanhar = 0;
+    private int totalTentativasTodosJogos = 0;
+    private int jogos = 0;
+    private int vitorias = 0;
+    private int derrotas = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,20 +87,47 @@ public class MainActivity extends AppCompatActivity {
 
     private void verificaAcertou(int numero) {
         tentativas++;
-        if(numero == numerosAdivinhar){
+        if(numero == numerosAdivinhar) {
             acertou();
-        }else if(numero < numerosAdivinhar){
+            return;
+        }
+        if(tentativas >= TENTATIVAS_ATE_PERDER){
+            perdeu();
+            return;
+        }
+        if(numero < numerosAdivinhar){
             Toast.makeText(this, getString(R.string.num_maior), Toast.LENGTH_SHORT).show();
         }else{
             Toast.makeText(this, getString(R.string.num_menor), Toast.LENGTH_SHORT).show();
         }
     }
 
+    private void perdeu() {
+        totalTentativasTodosJogos += tentativas;
+        jogos++;
+        derrotas++;
+        String men = getString(R.string.num_tent_2);
+        jogarOutraVez(R.string.perdeu, men);
+    }
+
     private void acertou() {
+        jogos++;
+        vitorias++;
+        totalTentativasTodosJogos += tentativas;
+        if(tentativas < minTentativasGanhar){
+            minTentativasGanhar = tentativas;
+        }
+        if(tentativas > maxTentativasGanhar){
+            maxTentativasGanhar = tentativas;
+        }
+        jogarOutraVez(R.string.acertou, getString(R.string.num_tent_1) + tentativas + getString(R.string.num_tent_15) + getString(R.string.num_tent_2));
+    }
+
+    private void jogarOutraVez(int recursoString, String men) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-        builder.setTitle(getString(R.string.acertou));
-        builder.setMessage(getString(R.string.num_tent_1) + tentativas + getString(R.string.num_tent_2));
+        builder.setTitle(getString(recursoString));
+        builder.setMessage(men);
 
         builder.setPositiveButton(getString(R.string.sim), new DialogInterface.OnClickListener() {
             @Override
